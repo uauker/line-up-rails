@@ -6,10 +6,8 @@ class Api::Facebook::V1::EventsController < ActionController::Base
     render :json => { :total => User.all.size }
   end
   
-  # GET /events/new
+  # GET /events/new?facebook_user_id=1&event_date=2013-01-31&facebook_name=Paulo+Guilherme
   def new
-      # facebook_user_id=1&event_date=2013-01-31&facebook_name=Paulo+Guilherme
-      
       user = User.new
       user.event_date = Date.strptime(params[:event_date], "%Y-%m-%d")
       user.facebook_user_id = params[:facebook_user_id]
@@ -17,8 +15,8 @@ class Api::Facebook::V1::EventsController < ActionController::Base
       user.save
       
       render :json => { :status => 'success' }
-    rescue Exception => e
-      render :json => { :status => 'error', :cause => e }
+    rescue
+      render :json => { :status => 'error' }
   end
 
   # GET /events/1?facebook_users_id=1&event_date=2013-01-31  
@@ -34,6 +32,18 @@ class Api::Facebook::V1::EventsController < ActionController::Base
         render :json => User.where('facebook_user_id IN (?) AND event_date BETWEEN ? AND ?', friends, start_date, end_date)
       rescue
         render :json => { :status => 'error' }
+  end
+  
+  # DELETE /events/1?event_date=2013-01-31
+  def destroy
+      date = Date.strptime(params[:event_date], "%Y-%m-%d")
+
+      user = User.where(:facebook_user_id => params[:id], :event_date => date.to_date).first
+      user.destroy
+      
+      render :json => { :status => 'success' }
+    rescue Exception => e
+      render :json => { :status => 'error' }
   end
   
 end
