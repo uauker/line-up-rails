@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130728165103) do
+ActiveRecord::Schema.define(:version => 20130730230810) do
 
   create_table "users", :force => true do |t|
     t.date     "event_date"
     t.integer  "facebook_user_id"
     t.string   "facebook_name"
     t.datetime "created_at"
+    t.string   "facebook_username"
   end
 
   add_index "users", ["event_date", "facebook_user_id"], :name => "index_users_on_event_date_and_facebook_user_id", :unique => true

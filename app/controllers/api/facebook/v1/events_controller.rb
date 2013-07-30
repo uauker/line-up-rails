@@ -6,12 +6,13 @@ class Api::Facebook::V1::EventsController < ActionController::Base
     render :json => { :total => User.all.size }
   end
   
-  # GET /events/new?facebook_user_id=1&event_date=2013-01-31&facebook_name=Paulo+Guilherme
+  # GET /events/new?facebook_user_id=1&event_date=2013-01-31&facebook_name=Paulo+Guilherme&facebook_username=uauker
   def new
       user = User.new
       user.event_date = Date.strptime(params[:event_date], "%Y-%m-%d")
       user.facebook_user_id = params[:facebook_user_id]
       user.facebook_name = params[:facebook_name]
+      user.facebook_username = params[:facebook_username]
       user.save
       
       render :json => { :status => 'success' }
