@@ -60,7 +60,7 @@ LineUpRails::Application.routes.draw do
     namespace :facebook do
       namespace :v1 do 
         namespace :events do
-          resources :me, :friends, :subscribe, :unsubscribe
+          resources :me, :friends, :subscribe, :unsubscribe, :participate
         end
       end
     end
