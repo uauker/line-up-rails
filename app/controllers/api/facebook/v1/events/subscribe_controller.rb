@@ -2,8 +2,8 @@ class Api::Facebook::V1::Events::SubscribeController < ActionController::Base
   
   respond_to :json
   
-  # curl -H "Content-Type: application/json; charset=UTF-8" -H 'Accept: application/json' --data '{"facebook_user_id":"1","event_date":"2013-01-31","facebook_name":"Paulo Guilherme","facebook_username":"uauker"}' --request GET "http://0.0.0.0:3000/api/facebook/v1/events/subscribe"  
-  def index
+  # curl -H "Content-Type: application/json; charset=UTF-8" -H 'Accept: application/json' --data '{"facebook_user_id":"1","event_date":"2013-01-31","facebook_name":"Paulo Guilherme","facebook_username":"uauker"}' --request POST "http://0.0.0.0:3000/api/facebook/v1/events/subscribe"  
+  def create
       subscribe = params[:subscribe]
           
       user = User.new
