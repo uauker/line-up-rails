@@ -62,8 +62,6 @@ LineUpRails::Application.routes.draw do
         namespace :events do
           resources :me, :friends, :subscribe, :unsubscribe
         end
-        
-        resources :events
       end
     end
   end
