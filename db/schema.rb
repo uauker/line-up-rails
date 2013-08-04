@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730230810) do
+ActiveRecord::Schema.define(:version => 20130804020359) do
 
   create_table "users", :force => true do |t|
     t.date     "event_date"
-    t.integer  "facebook_user_id"
+    t.string   "facebook_user_id"
     t.string   "facebook_name"
     t.datetime "created_at"
     t.string   "facebook_username"
