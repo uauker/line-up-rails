@@ -16,7 +16,7 @@ class Api::Facebook::V1::Events::FriendsController < ActionController::Base
 
       render :json => User.where('facebook_user_id IN (?) AND event_date BETWEEN ? AND ?', friend_ids, start_date, end_date)
     rescue Exception => e
-      render :json => { :status => 'error' }
+      render :json => e
   end
   
 end
